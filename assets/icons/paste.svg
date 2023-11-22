@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="428"
+   height="480"
+   viewBox="0 0 428 480"
+   version="1.1"
+   id="svg1796"
+   sodipodi:docname="paste.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs1800" />
+  <sodipodi:namedview
+     id="namedview1798"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="true"
+     inkscape:zoom="0.35355339"
+     inkscape:cx="-76.367532"
+     inkscape:cy="-135.7645"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1796">
+    <inkscape:grid
+       type="xygrid"
+       id="grid1929"
+       spacingx="2"
+       spacingy="2" />
+  </sodipodi:namedview>
+  <title
+     id="title1792">cancel</title>
+  <metadata
+     id="metadata1921">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>cancel</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <circle
+     style="display:none;fill:#e6e6e6;stroke-width:10"
+     id="path1989"
+     cx="214"
+     cy="235"
+     r="195"
+     sodipodi:insensitive="true" />
+  <path
+     id="rect5353"
+     style="display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:38.256;stroke-dasharray:none"
+     d="M 140,30 C 116.28801,30.06001 94.742332,46.767006 90,70 H 30 v 300 h 130 v 45 c 0,11.07995 6,25 20,25 h 200 c 11.07995,0 20,-11.92005 20,-23 V 200 L 340,140 H 250 V 70 H 190 C 185.24849,46.722506 163.7575,30.002573 140,30 Z m 0,40 c 6,0 26,0 26,20 v 20 H 188.29492 199.43164 210 v 30 h -30 c -11.07995,0 -19.39503,6.92011 -19.43164,18 L 160,330 H 70 V 110 H 80 91.136718 114 V 90 c 0,-20 20,-20 26,-20 z m 60,110 h 20 30 60 v 20 c 0,11.07994 16.92006,30 28,30 h 22 V 400 H 200 v -30 z m 140,0 20,20 h -20 z"
+     sodipodi:nodetypes="cccccsssccccccczscccccssccccccszccccssccccccccc" />
+  <rect
+     style="display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:40;stroke-dasharray:none"
+     id="rect5907"
+     width="120"
+     height="40"
+     x="220"
+     y="250"
+     ry="5" />
+  <rect
+     style="display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:40;stroke-dasharray:none"
+     id="rect5911"
+     width="120"
+     height="40"
+     x="220"
+     y="330"
+     ry="5" />
+</svg>

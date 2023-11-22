@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="428"
+   height="480"
+   viewBox="0 0 428 480"
+   version="1.1"
+   id="svg1796"
+   sodipodi:docname="thesaurus.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs1800" />
+  <sodipodi:namedview
+     id="namedview1798"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="true"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="81.31728"
+     inkscape:cy="219.2031"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1796"
+     inkscape:connector-spacing="10">
+    <inkscape:grid
+       type="xygrid"
+       id="grid1929"
+       spacingx="2"
+       spacingy="2" />
+  </sodipodi:namedview>
+  <title
+     id="title1792">cancel</title>
+  <metadata
+     id="metadata1921">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>cancel</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <circle
+     style="display:none;fill:#e6e6e6;stroke-width:10"
+     id="path1989"
+     cx="214"
+     cy="235"
+     r="195"
+     sodipodi:insensitive="true" />
+  <path
+     id="rect6603"
+     style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:20;stroke-dasharray:none"
+     d="M 30,60 V 286 420 H 190 V 380 H 70 v -54 h 104 c 6.09086,0 12.16876,3.71879 16,8.87891 V 291.12305 C 182.43096,287.95159 173.80518,286 164,286 H 70 V 100 h 104 c 9.99996,0 20,10.00004 20,20 v 110 h 40 V 120 c 0,-9.99996 10.00004,-20 20,-20 h 106 v 130 h 40 V 60 H 264 C 241.59618,60 225.25706,70.052458 214,82.033203 202.74294,70.052458 186.40382,60 164,60 Z m 190,200 v 40 h 60 v 120 h 40 V 300 h 60 v -40 z"
+     sodipodi:nodetypes="cccccccsccsccssccssccccscscccccccccc" />
+</svg>
