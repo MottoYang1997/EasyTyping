@@ -15,6 +15,18 @@ A simplified notepad to help you stay motivated and focused on writing tasks wit
 1. Thesaurus Dictionary.
 1. Motivation Wizard.
 
+# How to run this software
+
+1. Install the latest [Python 3](https://www.python.org/downloads/)
+2. In the commandline prompt, type
+~~~
+pip install pyqt6 requests
+~~~
+3. In the project root folder, type
+~~~
+python main_window.py
+~~~
+
 ## Note
 
 1. To use the thesaurus dictionary, please register an API key at [API Ninjas](https://api-ninjas.com/api/thesaurus).
