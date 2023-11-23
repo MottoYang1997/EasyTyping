@@ -15,7 +15,7 @@ A simplified notepad to help you stay motivated and focused on writing tasks wit
 1. Thesaurus Dictionary.
 1. Motivation Wizard.
 
-# How to run this software
+## How to run this software
 
 1. Install the latest [Python 3](https://www.python.org/downloads/)
 2. In the commandline prompt, type
