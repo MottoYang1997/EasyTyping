@@ -24,7 +24,7 @@ pip install pyqt6 requests
 ~~~
 3. In the project root folder, type
 ~~~
-python main_window.py
+python main_window.pyw
 ~~~
 
 ## Note
