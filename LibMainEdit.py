@@ -60,6 +60,21 @@ class WriteProgressBar(QtWidgets.QWidget):
         painter.end()
 
 
+class MyPlainTextEdit(QtWidgets.QPlainTextEdit):
+    focus_lost = QtCore.pyqtSignal()
+    focus_got = QtCore.pyqtSignal()
+    def __init__(self, parent=None):
+        super().__init__()
+
+    def focusOutEvent(self, e: QtGui.QFocusEvent | None) -> None:
+        self.focus_lost.emit()
+        return super().focusOutEvent(e)
+
+    def focusInEvent(self, e: QtGui.QFocusEvent | None) -> None:
+        self.focus_got.emit()
+        return super().focusInEvent(e)
+
+
 class MainEdit(QtWidgets.QWidget):
     max_row_characters = 45
     font = QtGui.QFont("Arial", 18)
@@ -74,7 +89,7 @@ class MainEdit(QtWidgets.QWidget):
         super().__init__()
 
         self.bar = WriteProgressBar()
-        self.edit = QtWidgets.QPlainTextEdit()
+        self.edit = MyPlainTextEdit()
         self.edit.setFont(self.font)
         edit_width = int(self.max_row_characters *
                          self.edit.font().pointSize() * 0.74 + 0.5)
@@ -111,6 +126,8 @@ class MainEdit(QtWidgets.QWidget):
 
     def connect_slots(self):
         self.edit.textChanged.connect(self.__editor_typed)
+        self.edit.focus_lost.connect(self.__pause_timer)
+        self.edit.focus_got.connect(self.__resume_timer)
         self.timer.timeout.connect(self.__timer_tick)
 
     def disconnect_slots(self):
@@ -140,6 +157,14 @@ class MainEdit(QtWidgets.QWidget):
 
     def __timer_tick(self):
         self.current_state.timer_ticked(self)
+    
+    def __pause_timer(self):
+        if self.timer.isActive():
+            self.timer.stop()
+    
+    def __resume_timer(self):
+        if not self.timer.isActive():
+            self.timer.start()
 
 
 class EditorAbstractState:
