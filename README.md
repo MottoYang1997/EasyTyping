@@ -14,17 +14,17 @@ A simplified notepad to help you stay motivated and focused on writing tasks wit
 1. Instant positive and negative feedback on your writing progress.
 1. Thesaurus Dictionary.
 1. Motivation Wizard.
-1. Real-time Markdown Rendering through `mistletoe`
+1. Real-time Markdown Rendering
 
 ## How to run this software
 
 1. Install the latest [Python 3](https://www.python.org/downloads/)
 2. In the commandline prompt, type
-~~~
-pip install pyqt6 requests pyqt6-webengine mistletoe
+~~~ bash
+pip install -r requirements.txt
 ~~~
 3. In the project root folder, type
-~~~
+~~~ bash
 python main_window.pyw
 ~~~
 
@@ -32,17 +32,16 @@ python main_window.pyw
 
 1. To use the thesaurus dictionary, please register an API key at [API Ninjas](https://api-ninjas.com/api/thesaurus).
 
-1. The software depends on the followign libraries.
+1. The software depends on the following libraries.
     1. PyQt6
     1. requests
-    1. mistletoe
 
 ## TODO
 1. Rewrite the MainWindows class to decouple the open, save, save as operations.
-1. Implement a state machine to track the status of the document. (Changed, unchanged, etc)
+1. Implement a state machine to track the status of the document. (Changed, unchanged, etc.)
 1. Add a setting dialog to configure the writing feedback.
 
-## Acknoledgement
+## Acknowledgement
 
 The development of this software has referred to the following libraries and websites.
 

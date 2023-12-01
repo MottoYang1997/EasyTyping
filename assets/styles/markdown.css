@@ -1,0 +1,102 @@
+@charset "utf-8";
+
+/*
+EasyTyping - a simplified notepad software
+Copyright (C) 2023 Yiming Yang
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+body {
+    font-family: Helvetica, Arial, Freesans, clean, sans-serif;
+    margin: 18px;
+    background: #fefefe;
+    font-size: 20px
+}
+
+p, blockquote, ul, ol, dl, li, table, pre {
+    margin: 16px 0;
+    font-size: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    margin: 2 2px;
+}
+
+h1 {
+    color: #000000;
+    font-size: 38px;
+}
+
+h2 {
+    border-bottom: 1px solid #CCCCCC;
+    color: #000000;
+    font-size: 34px;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+h4 {
+    font-size: 26px;
+}
+
+h5 {
+    font-size: 22px;
+}
+
+h6 {
+    color: #777777;
+    background-color: inherit;
+    font-size: 18px;
+}
+
+hr {
+    height: 0.2em;
+    border: 0;
+    color: #CCCCCC;
+    background-color: #CCCCCC;
+}
+
+code, pre {
+    border-radius: 3px;
+    background-color: #F8F8F8;
+    color: inherit;
+}
+
+code {
+    border: 1px solid #EAEAEA;
+    margin: 5 5px;
+    padding: 2 2px;
+}
+
+pre {
+    border: 1px solid #CCCCCC;
+    line-height: 1.25em;
+    overflow: auto;
+    padding: 6px 10px;
+}
+
+pre > code {
+    border: 0;
+    margin: 5px;
+    padding: 0;
+}
+
+a, a:visited {
+    color: #4183C4;
+    text-decoration: none;
+}

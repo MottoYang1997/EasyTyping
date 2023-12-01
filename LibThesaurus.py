@@ -23,7 +23,14 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtCore import Qt, QObject, QThread, pyqtSignal
 import requests
-my_api_key = "your_api_key_here"
+
+
+# Load api-key when the library is imported
+try:
+    with open("assets/thesaurus_key.txt") as file:
+        my_api_key = file.readline().replace('\n', '')
+except FileExistsError:
+    my_api_key = ""
 
 
 class ThesaurusDictWorker(QObject):

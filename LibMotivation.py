@@ -22,7 +22,7 @@ from PyQt6.QtWidgets import (
     QVBoxLayout, QHBoxLayout,
     QLabel
 )
-from PyQt6.QtGui import QIcon, QPixmap, QFont
+from PyQt6.QtGui import QIcon, QFont
 from PyQt6.QtCore import Qt
 from LibEmoji import emoji_dict, Emoji
 import json

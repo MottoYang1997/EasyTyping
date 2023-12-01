@@ -21,26 +21,13 @@ import os
 
 from PyQt6 import QtGui, QtCore, QtWidgets
 from PyQt6.QtCore import Qt
-from PyQt6.QtWebEngineWidgets import QWebEngineView
 from LibMainEdit import MainEdit
+from LibPreview import PreviewWidget
 from LibThesaurus import ThesaurusDictWidget
+from LibMotivation import MotivationWidget
 from LibFind import FindDialog
 from LibReplace import FindReplaceDialog
-from LibMotivation import MotivationWidget
 
-import mistletoe
-
-
-
-
-# In case the python scripts are 'forzen', i.e. archived by pyinstaller and other similar tools
-if getattr(sys, 'frozen', False):
-    application_path = os.path.dirname(sys.executable)
-else:
-    application_path = os.path.dirname(os.path.abspath(__file__))
-
-# Change the working directory to be the right app path
-os.chdir(application_path)
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -57,16 +44,14 @@ class MainWindow(QtWidgets.QMainWindow):
         self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.statusBar().addWidget(self.status_label,
                                    True)
-        # Smaller sized bars and fonts
+
         self.statusBar().setStyleSheet(
             """
                 QStatusBar {
                     border: 1px solid lightgray;
-                    font-size: 12px;
                 }
 
                 QStatusBar > QLabel {
-                    font-size: 12px;
                 }
             """
         )
@@ -78,40 +63,24 @@ class MainWindow(QtWidgets.QMainWindow):
         self.__create_dock_widgets()
 
         self.main_edit = MainEdit()
-        self.webview = QWebEngineView()
-        self.main_edit.edit.textChanged.connect(self.render_markdown)
-        #self.webview.setUrl(QUrl("https://example.com"))
 
-        self.webview.setHtml("Please start writing...")
-
-        central_widget = QtWidgets.QWidget(self)
-        self.setCentralWidget(central_widget)
-
-        splitter = QtWidgets.QSplitter(central_widget)
-        splitter.addWidget(self.main_edit)
-        splitter.addWidget(self.webview)
-
-        #splitter.setOrientation(0)
-        layout = QtWidgets.QVBoxLayout(central_widget)
-        layout.addWidget(splitter)
+        self.setCentralWidget(self.main_edit)
 
         self.__init_search_find_dialogs()
 
         self.__link_toolbar_slots()
         self.__link_shortcuts()
+        self.main_edit.edit.textChanged.connect(self.__render_markdown)
 
         self.status_timer = QtCore.QTimer(self)
         self.status_timer.start(250)
 
         self.main_edit.edit.textChanged.connect(self.__touched_file)
         self.status_timer.timeout.connect(self.update_status_bar)
-    
-    def render_markdown(self):
-        markdown_text = self.main_edit.edit.toPlainText()
-        html_content = mistletoe.markdown(markdown_text)
-        self.webview.setHtml(html_content)
-    # Smaller icons , more space for text labels
-    def __create_toolbar(self, icon_size=24):
+
+        self.main_edit.edit.setFocus()
+
+    def __create_toolbar(self, icon_size=38):
         def add_toolbar_actions(texts: list[str],
                                 icon_filenames: list[str]):
             path = "assets/icons/"
@@ -127,16 +96,16 @@ class MainWindow(QtWidgets.QMainWindow):
         self.toolbar = QtWidgets.QToolBar("Toolbar", self)
         self.toolbar.setMovable(False)
         self.toolbar.setIconSize(QtCore.QSize(icon_size, icon_size))
-        # Add text labels to buttons, since the default icons are not very intuitive
-        self.toolbar.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
+        self.toolbar.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
         self.toolbar.visibilityChanged.connect(self.toolbar.show)
 
-        # Doc: New, Save, Save As
-        toolbar_txt = ["New", "Open", "Save", "Save As"]
-        toolbar_icon_path = ["file", "internal", "download", "download.modified"]
+        # Doc: New, Save, Save As, Preview
+        toolbar_txt = ["New", "Open", "Save", "Save As", "|", "Preview"]
+        toolbar_icon_path = ["file", "internal", "download", "download.modified", "|", "show"]
         add_toolbar_actions(toolbar_txt, toolbar_icon_path)
 
         self.toolbar.addSeparator()
+
         # Text: Cut, Copy, Paste, Find, Replace
         toolbar_txt = ["Cut", "Copy", "Paste", '|', "Find", "Replace"]
         toolbar_icon_path = ["cut", "copy", "paste", '|', "search", "replace"]
@@ -159,6 +128,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setWindowTitle(os.path.basename(self.file_name) + " - Easy Typing")
 
     def __create_dock_widgets(self):
+        self.widget_preview = PreviewWidget()
+        self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea,
+                           self.widget_preview)
+
         self.widget_thesaurus = ThesaurusDictWidget()
         self.addDockWidget(Qt.DockWidgetArea.LeftDockWidgetArea,
                            self.widget_thesaurus)
@@ -168,8 +141,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.addDockWidget(Qt.DockWidgetArea.LeftDockWidgetArea,
                            self.widget_motivation)
         self.widget_motivation.hide()
-
-        # may need some changes to show the WebView
 
         self.setStyleSheet(
             """
@@ -191,6 +162,7 @@ class MainWindow(QtWidgets.QMainWindow):
             "Open": "Ctrl+o",
             "Save": "Ctrl+s",
             "Save As": "Ctrl+Shift+s",
+            "Preview": "Ctrl+p",
             "Find": "Ctrl+f",
             "Replace": "Ctrl+r",
             "Thesaurus": "Ctrl+t",
@@ -208,6 +180,7 @@ class MainWindow(QtWidgets.QMainWindow):
             "Open": self.open_file,
             "Save": self.save_file,
             "Save As": self.save_as_file,
+            "Preview": self.widget_preview.toggle_show_hide,
             "Cut": self.main_edit.edit.cut,
             "Copy": self.main_edit.edit.copy,
             "Paste": self.main_edit.edit.paste,
@@ -222,6 +195,10 @@ class MainWindow(QtWidgets.QMainWindow):
             if slot is None:
                 continue
             action.triggered.connect(slot)
+
+    def __render_markdown(self):
+        markdown_text = self.main_edit.edit.toPlainText()
+        self.widget_preview.update_preview(markdown_text)
 
     def new_file(self):
         if len(self.main_edit.edit.toPlainText()) == 0:

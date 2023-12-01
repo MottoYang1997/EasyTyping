@@ -63,6 +63,7 @@ class WriteProgressBar(QtWidgets.QWidget):
 class MyPlainTextEdit(QtWidgets.QPlainTextEdit):
     focus_lost = QtCore.pyqtSignal()
     focus_got = QtCore.pyqtSignal()
+
     def __init__(self, parent=None):
         super().__init__()
 

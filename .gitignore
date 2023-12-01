@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# API Tokens
+assets/thesaurus_key.txt
+
 # C extensions
 *.so
 
