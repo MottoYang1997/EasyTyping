@@ -14,13 +14,14 @@ A simplified notepad to help you stay motivated and focused on writing tasks wit
 1. Instant positive and negative feedback on your writing progress.
 1. Thesaurus Dictionary.
 1. Motivation Wizard.
+1. Real-time Markdown Rendering through `mistletoe`
 
 ## How to run this software
 
 1. Install the latest [Python 3](https://www.python.org/downloads/)
 2. In the commandline prompt, type
 ~~~
-pip install pyqt6 requests
+pip install pyqt6 requests pyqt6-webengine mistletoe
 ~~~
 3. In the project root folder, type
 ~~~
@@ -34,6 +35,7 @@ python main_window.pyw
 1. The software depends on the followign libraries.
     1. PyQt6
     1. requests
+    1. mistletoe
 
 ## TODO
 1. Rewrite the MainWindows class to decouple the open, save, save as operations.
@@ -47,6 +49,7 @@ The development of this software has referred to the following libraries and web
 1. [PyQt6](https://www.riverbankcomputing.com/software/pyqt/)
 1. [Microns Icon Library](https://www.s-ings.com/projects/microns-icon-font/)
 1. [QFindDialogs](https://github.com/Yet-Zio/QFindDialogs)
-1. [How to Motivate Yourself to Do Things You Don’t Want to Do - HBR](https://hbr.org/2018/12/how-to-motivate-yourself-to-do-things-you-dont-want-to-do)
+1. [How to Motivate Yourself to Do Things You Don't Want to Do - HBR](https://hbr.org/2018/12/how-to-motivate-yourself-to-do-things-you-dont-want-to-do)
 1. [Thesaurus API](https://api-ninjas.com/api/thesaurus)
 1. [The most dangerous writing app](https://www.squibler.io/dangerous-writing-prompt-app)
+1. [Mistletoe python markdown render](https://github.com/miyuchina/mistletoe)
