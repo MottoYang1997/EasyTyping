@@ -35,7 +35,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.file_name = "untitled.md"
         self.is_file_touched = False
-        self.setMinimumSize(1024, 768)
+        self.setMinimumHeight(768)
 
         self.setWindowTitle(self.file_name + " - Easy Typing")
         self.setWindowIcon(QtGui.QIcon("assets/icons/edit.svg"))
