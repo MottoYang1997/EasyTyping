@@ -54,6 +54,9 @@ class PreviewWidget(QtWidgets.QDockWidget):
 
         self.setWidget(self.preview)
 
+        self.update_preview("")
+
+
     def update_preview(self, markdown_txt: str):
         self.__preview_doc.setMarkdown(markdown_txt)
         self.__preview_doc.setHtml(self.__preview_doc.toHtml())
