@@ -38,7 +38,7 @@ class PreviewWidget(QtWidgets.QDockWidget):
         self.setAllowedAreas(Qt.DockWidgetArea.RightDockWidgetArea |
                              Qt.DockWidgetArea.LeftDockWidgetArea |
                              Qt.DockWidgetArea.BottomDockWidgetArea)
-        self.setMinimumWidth(480)
+        self.setMinimumSize(480, 600)
 
         self.preview = MyTextViewNoZoom()
         self.preview.setReadOnly(True)

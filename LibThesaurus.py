@@ -56,7 +56,7 @@ class ThesaurusDictWidget(QDockWidget):
         self.setAllowedAreas(Qt.DockWidgetArea.RightDockWidgetArea |
                              Qt.DockWidgetArea.LeftDockWidgetArea |
                              Qt.DockWidgetArea.BottomDockWidgetArea)
-        self.setMinimumWidth(200)
+        self.setMinimumSize(200, 400)
 
         entry_layout = QHBoxLayout()
         self.__entry_widget = QLineEdit()

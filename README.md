@@ -23,20 +23,21 @@ A simplified notepad to help you stay motivated and focused on writing tasks wit
 ~~~ bash
 pip install -r requirements.txt
 ~~~
-3. In the project root folder, type
+3. To use the thesaurus dictionary, please register an API key at [API Ninjas](https://api-ninjas.com/api/thesaurus).
+You can paste the API Key into "./assets/thesaurus_key.txt"
+4. In the project root folder, type
 ~~~ bash
 python main_window.pyw
 ~~~
 
 ## Note
 
-1. To use the thesaurus dictionary, please register an API key at [API Ninjas](https://api-ninjas.com/api/thesaurus).
-
 1. The software depends on the following libraries.
     1. PyQt6
     1. requests
 
 ## TODO
+
 1. Rewrite the MainWindows class to decouple the open, save, save as operations.
 1. Implement a state machine to track the status of the document. (Changed, unchanged, etc.)
 1. Add a setting dialog to configure the writing feedback.
