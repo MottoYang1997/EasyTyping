@@ -29,6 +29,16 @@ from LibFind import FindDialog
 from LibReplace import FindReplaceDialog
 
 
+# Change directory to project root folder
+if getattr(sys, "frozen", False):
+    # If the file is frozen into .exe by pyinstaller, etc.
+    app_path = os.path.dirname(sys.executable)
+else:
+    # If the file is run as a script
+    app_path = os.path.dirname(os.path.abspath(__file__))
+os.chdir(app_path)
+
+
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
