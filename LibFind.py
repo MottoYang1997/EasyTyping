@@ -40,6 +40,7 @@ from PyQt6.QtWidgets import (
 )
 
 
+# noinspection PyUnresolvedReferences
 class FindDialog(QDialog):
     def __init__(self, search_editor: QPlainTextEdit, parent=None):
         super().__init__(parent)
@@ -72,6 +73,7 @@ class FindDialog(QDialog):
 
         self.wholeWordsCheckBox = QCheckBox("&Whole words")
         self.backwardCheckBox = QCheckBox("Search &backward")
+        # noinspection SpellCheckingInspection
         self.searchSelectionCheckBox = QCheckBox("Search se&lection")
 
         self.buttonBox = QDialogButtonBox(Qt.Orientation.Vertical)
@@ -114,24 +116,24 @@ class FindDialog(QDialog):
         query = self.lineEdit.text()
         re = QtCore.QRegularExpression()
 
-        editor = self.search_editor
+        find_editor = self.search_editor
 
         if self.fromStartCheckBox.isChecked():
-            cursor = editor.textCursor()
+            cursor = find_editor.textCursor()
             cursor.movePosition(QTextCursor.MoveOperation.Start)
-            editor.setTextCursor(cursor)
+            find_editor.setTextCursor(cursor)
         self.fromStartCheckBox.setChecked(False)
 
         if self.regexCheckBox.isChecked():
             re.setPattern(query)
             if self.backwardCheckBox.isChecked():
-                self.last_match = editor.find(re, QTextDocument.FindFlag.FindBackward)
+                self.last_match = find_editor.find(re, QTextDocument.FindFlag.FindBackward)
             else:
-                self.last_match = editor.find(re, QTextDocument.FindFlag(0))
+                self.last_match = find_editor.find(re, QTextDocument.FindFlag(0))
 
         if self.searchSelectionCheckBox.isChecked():
-            query = editor.textCursor().selectedText()
-            editor.find(query)
+            query = find_editor.textCursor().selectedText()
+            find_editor.find(query)
         else:
             if self.backwardCheckBox.isChecked():
                 flags = QTextDocument.FindFlag.FindBackward
@@ -150,7 +152,7 @@ class FindDialog(QDialog):
                 elif not self.wholeWordsCheckBox.isChecked() and self.caseCheckBox.isChecked():
                     flags |= QTextDocument.FindFlag.FindCaseSensitively
 
-            self.last_match = editor.find(query, flags)
+            self.last_match = find_editor.find(query, flags)
 
     def regex_mode(self):
         self.caseCheckBox.setChecked(False)

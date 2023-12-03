@@ -65,7 +65,7 @@ class MyPlainTextEdit(QtWidgets.QPlainTextEdit):
     focus_got = QtCore.pyqtSignal()
 
     def __init__(self, parent=None):
-        super().__init__()
+        super().__init__(parent)
 
     def focusOutEvent(self, e: QtGui.QFocusEvent | None) -> None:
         self.focus_lost.emit()
@@ -76,6 +76,7 @@ class MyPlainTextEdit(QtWidgets.QPlainTextEdit):
         return super().focusInEvent(e)
 
 
+# noinspection PyUnresolvedReferences
 class MainEdit(QtWidgets.QWidget):
     max_row_characters = 45
     font = QtGui.QFont("Arial", 18)

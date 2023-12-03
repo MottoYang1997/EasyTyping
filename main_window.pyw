@@ -28,7 +28,6 @@ from LibMotivation import MotivationWidget
 from LibFind import FindDialog
 from LibReplace import FindReplaceDialog
 
-
 # Change directory to project root folder
 if getattr(sys, "frozen", False):
     # If the file is frozen into .exe by pyinstaller, etc.
@@ -39,6 +38,7 @@ else:
 os.chdir(app_path)
 
 
+# noinspection PyUnresolvedReferences
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
@@ -80,7 +80,10 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.__link_toolbar_slots()
         self.__link_shortcuts()
+
         self.main_edit.edit.textChanged.connect(self.__render_markdown)
+        self.main_edit.edit.textChanged.connect(self.__update_preview_scroll)
+        self.main_edit.edit.verticalScrollBar().valueChanged.connect(self.__update_preview_scroll)
 
         self.status_timer = QtCore.QTimer(self)
         self.status_timer.start(250)
@@ -210,6 +213,21 @@ class MainWindow(QtWidgets.QMainWindow):
         markdown_text = self.main_edit.edit.toPlainText()
         self.widget_preview.update_preview(markdown_text)
 
+    def __update_preview_scroll(self):
+        source_min = self.main_edit.edit.verticalScrollBar().minimum()
+        source_max = self.main_edit.edit.verticalScrollBar().maximum()
+        if source_max == source_min:
+            return False
+        source_val = self.main_edit.edit.verticalScrollBar().value()
+
+        destination_min = self.widget_preview.preview.verticalScrollBar().minimum()
+        destination_max = self.widget_preview.preview.verticalScrollBar().maximum()
+        destination_val = destination_min + (source_val - source_min) * \
+            (destination_max - destination_min) / (source_max - source_min)
+        destination_val = int(destination_val + 0.5)
+        self.widget_preview.preview.verticalScrollBar().setValue(destination_val)
+        return True
+
     def new_file(self):
         if len(self.main_edit.edit.toPlainText()) == 0:
             QtWidgets.QMessageBox.information(self, " ", "No change required.")
@@ -240,7 +258,7 @@ class MainWindow(QtWidgets.QMainWindow):
             return
 
         self.file_name = filename
-        self.setWindowTitle(os.path.basename(filename)+" - Easy Typing")
+        self.setWindowTitle(os.path.basename(filename) + " - Easy Typing")
         with open(filename, "r") as f:
             self.main_edit.edit.clear()
             self.main_edit.edit.appendPlainText("".join(f.readlines()))
@@ -254,7 +272,6 @@ class MainWindow(QtWidgets.QMainWindow):
         with open(self.file_name, "w") as f:
             f.write(self.main_edit.edit.toPlainText())
         self.__untouched_file()
-        self.main_edit.current_state = self.main_edit.idle_state
 
     def save_as_file(self):
         filename = QtWidgets.QFileDialog.getSaveFileName(self, "Save As",

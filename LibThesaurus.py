@@ -33,6 +33,7 @@ except FileExistsError:
     my_api_key = ""
 
 
+# noinspection PyUnresolvedReferences
 class ThesaurusDictWorker(QObject):
     got_response = pyqtSignal(requests.Response)
     finished = pyqtSignal()
@@ -49,6 +50,7 @@ class ThesaurusDictWorker(QObject):
         self.finished.emit()
 
 
+# noinspection PyUnresolvedReferences
 class ThesaurusDictWidget(QDockWidget):
     def __init__(self):
         super().__init__()

@@ -72,6 +72,7 @@ class MotivationData:
         self.set_benefits(result["benefits"])
 
 
+# noinspection PyUnresolvedReferences
 class MotivationWizard(QWizard):
     def __init__(self):
         super().__init__()
@@ -227,6 +228,7 @@ class MotivationWizard(QWizard):
         return self.__data
 
 
+# noinspection PyUnresolvedReferences
 class MotivationWidget(QDockWidget):
     def __init__(self):
         super().__init__()

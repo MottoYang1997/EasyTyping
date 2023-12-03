@@ -40,6 +40,7 @@ from PyQt6.QtWidgets import (
 )
 
 
+# noinspection PyUnresolvedReferences
 class FindReplaceDialog(QDialog):
     def __init__(self, replace_editor: QPlainTextEdit, parent=None):
         super(FindReplaceDialog, self).__init__(parent)
@@ -130,24 +131,24 @@ class FindReplaceDialog(QDialog):
     def find(self):
         query = self.lineEdit.text()
         re = QtCore.QRegularExpression()
-        editor = self.replace_editor
+        find_editor = self.replace_editor
 
         if self.fromStartCheckBox.isChecked():
-            cursor = editor.textCursor()
+            cursor = find_editor.textCursor()
             cursor.movePosition(QTextCursor.MoveOperation.Start)
-            editor.setTextCursor(cursor)
+            find_editor.setTextCursor(cursor)
         self.fromStartCheckBox.setChecked(False)
 
         if self.regexCheckBox.isChecked():
             re.setPattern(query)
             if self.backwardCheckBox.isChecked():
-                self.lastMatch = editor.find(re, QtGui.QTextDocument.FindFlag.FindBackward)
+                self.lastMatch = find_editor.find(re, QtGui.QTextDocument.FindFlag.FindBackward)
             else:
-                self.lastMatch = editor.find(re)
+                self.lastMatch = find_editor.find(re)
 
         if self.searchSelectionCheckBox.isChecked():
-            query = editor.textCursor().selectedText()
-            editor.find(query)
+            query = find_editor.textCursor().selectedText()
+            find_editor.find(query)
 
         else:
             if self.backwardCheckBox.isChecked():
@@ -167,23 +168,23 @@ class FindReplaceDialog(QDialog):
                 elif not self.wholeWordsCheckBox.isChecked() and self.caseCheckBox.isChecked():
                     flags |= QTextDocument.FindFlag.FindCaseSensitively
 
-            self.lastMatch = editor.find(query, flags)
+            self.lastMatch = find_editor.find(query, flags)
 
     def replace(self):
-        editor = self.replace_editor
-        cursor = editor.textCursor()
+        replace_editor = self.replace_editor
+        cursor = replace_editor.textCursor()
 
         if cursor.hasSelection():
             cursor.insertText(self.replaceField.text())
-            editor.setTextCursor(cursor)
+            replace_editor.setTextCursor(cursor)
 
     def replace_all(self):
         self.lastMatch = False
         self.find()
         self.replace()
 
-        editor = self.replace_editor
-        for i in range(editor.document().lineCount()):
+        replace_editor = self.replace_editor
+        for i in range(replace_editor.document().lineCount()):
             self.find()
             self.replace()
 
