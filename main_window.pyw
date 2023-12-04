@@ -44,6 +44,7 @@ class MainWindow(QtWidgets.QMainWindow):
         super().__init__()
 
         self.file_name = "untitled.md"
+        self.file_encoding = "UTF-8"
         self.is_file_touched = False
         self.setMinimumHeight(768)
 
@@ -259,18 +260,21 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.file_name = filename
         self.setWindowTitle(os.path.basename(filename) + " - Easy Typing")
-        with open(filename, "r") as f:
+        with open(filename, "r", encoding=self.file_encoding, errors="ignore") as f:
             self.main_edit.edit.clear()
             self.main_edit.edit.appendPlainText("".join(f.readlines()))
         self.main_edit.current_state = self.main_edit.idle_state
         self.__untouched_file()
 
+    def __write_file(self):
+        with open(self.file_name, "wb") as f:
+            f.write(self.main_edit.edit.toPlainText().encode(self.file_encoding, "ignore"))
+
     def save_file(self):
         if self.file_name == "untitled.md":
             self.save_as_file()
             return
-        with open(self.file_name, "w") as f:
-            f.write(self.main_edit.edit.toPlainText())
+        self.__write_file()
         self.__untouched_file()
 
     def save_as_file(self):
@@ -281,8 +285,7 @@ class MainWindow(QtWidgets.QMainWindow):
         if filename == "":
             return
         self.file_name = filename
-        with open(self.file_name, "w") as f:
-            f.write(self.main_edit.edit.toPlainText())
+        self.__write_file()
         self.__untouched_file()
         self.main_edit.current_state = self.main_edit.idle_state
 
